@@ -30,7 +30,7 @@
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/Nutrify.git
+git clone https://github.com/amansinghh1/Nutrify.git
 cd Nutrify
 ```
 
