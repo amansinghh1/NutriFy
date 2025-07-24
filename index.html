@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NuriFy - Meal Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body class="bg-[#fffef7] font-sans">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-green-500 to-orange-400 text-white text-center py-6">
+    <h1 class="text-6xl font-bold">NutriFy</h1><br>
+    <p class="text-lg">Calculate nutritional values of your meals with real-time updates</p>
+  </header>
+
+  <!-- Main Content -->
+  <div class="max-w-6xl mx-auto px-0 py-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Left Column -->
+    <div class="lg:col-span-2 space-y-6">
+      <!-- Add Ingredient -->
+      <section class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-2 flex items-center"><i data-feather="plus-square" class="mr-2"></i> Add Ingredients</h2>
+        <input type="text"id="ingredient-input"placeholder="e.g. 100g rice or 2 pcs egg"class="w-full p-3 border border-gray-300 rounded mb-4"/>
+        <button onclick="addIngredient()" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">Add Ingredient</button>
+      </section>
+
+      <!-- Meal Ingredients -->
+      <section class="bg-white p-6 rounded-lg shadow">
+        <h2 class="text-xl font-semibold mb-4">Your Meal</h2>
+        <div id="ingredient-list" class="space-y-2"></div>
+        <div class="mt-4 space-x-2">
+          <button onclick="saveMeal()" class="bg-orange-500 hover:bg-[#FF6000] text-white px-4 py-2 rounded">Save Meal</button>
+          <button onclick="shareMeal()" class="bg-orange-500 hover:bg-[#FF6000] text-white px-4 py-2 rounded">Share</button>
+          <button onclick="clearAll()" class="bg-red-500 hover:bg-[#D23B05] text-white px-4 py-2 rounded">Clear All</button>
+        </div>
+      </section>
+    </div>
+
+<!-- Right Column (Stats) -->
+<div class="space-y-6">
+  <!-- Total Calories -->
+  <section class="bg-gradient-to-r from-[#f2f6fe] to-[#fffff2] p-6 rounded-lg shadow outline outline-1 outline-gray-300">
+    <h2 class="text-xl font-semibold flex items-center"><i data-feather="activity" class="mr-2">Total Calories</i></h2>
+    <p class="text-3xl font-bold text-orange-500" id="total-calories">0 kcal</p>
+    <p class="text-sm text-gray-500" id="calorie-percent">0% of 2000 cal daily target</p>
+  </section>
+
+  <!-- Macronutrient Stats -->
+  <div class="grid grid-cols-3 gap-2">
+    <div class="bg-[#f2f6fe] p-4 rounded text-center outline outline-1 outline-gray-300">
+      <p class="text-sm text-gray-500">Protein</p>
+      <p class="font-bold" id="total-protein">0g</p>
+      <p class="text-xs text-gray-500" id="protein-percent">0% of daily target 50g</p>
+    </div>
+    <div class="bg-[#fff8f9] p-4 rounded text-center outline outline-1 outline-gray-300">
+      <p class="text-sm text-gray-500">Carbs</p>
+      <p class="font-bold" id="total-carbs">0g</p>
+      <p class="text-xs text-gray-500" id="carbs-percent">0% of daily target 250g</p>
+    </div>
+    <div class="bg-[#fffff2] p-4 rounded text-center outline outline-1 outline-gray-300">
+      <p class="text-sm text-gray-500">Fat</p>
+      <p class="font-bold" id="total-fat">0g</p>
+      <p class="text-xs text-gray-500" id="fat-percent">0% of daily target 65g</p>
+    </div>
+  </div>
+
+  <!-- Macronutrient Distribution -->
+  <section class="bg-white p-6 rounded-lg shadow">
+    <h3 class="text-lg font-semibold mb-2">Macronutrient Distribution</h3>
+    <p class="text-sm">Protein</p>
+    <div class="w-full h-2 bg-gray-200 rounded-full mb-2">
+      <div id="bar-protein" class="h-full bg-green-500 rounded-full" style="width: 0%"></div>
+    </div>
+    <p class="text-sm">Carbohydrates</p>
+    <div class="w-full h-2 bg-gray-200 rounded-full mb-2">
+      <div id="bar-carbs" class="h-full bg-yellow-500 rounded-full" style="width: 0%"></div>
+    </div>
+    <p class="text-sm">Fat</p>
+    <div class="w-full h-2 bg-gray-200 rounded-full mb-2">
+      <div id="bar-fat" class="h-full bg-red-500 rounded-full" style="width: 0%"></div>
+    </div>
+  </section>
+
+  <!-- Other Nutrients -->
+    <div class="grid grid-cols-2 gap-4 sm:grid-cols-2">
+      <div class="bg-[#f2f6fe] p-4 rounded text-center outline outline-1 outline-gray-300">
+        <p class="text-sm text-gray-500">Fiber</p>
+        <p class="font-bold text-lg" id="total-fiber">0g</p>
+        <p class="text-xs text-gray-500" id="fiber-percent">0% of daily target 25g</p>
+      </div>
+      <div class="bg-[#fff8f9] p-4 rounded text-center outline outline-1 outline-gray-300">
+        <p class="text-sm text-gray-500">Sodium</p>
+        <p class="font-bold text-lg" id="total-sodium">0mg</p>
+        <p class="text-xs text-gray-500" id="sodium-percent">0% of daily target 2300mg</p>
+      </div>
+  
+</div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
